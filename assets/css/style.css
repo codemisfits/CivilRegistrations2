@@ -147,6 +147,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -194,6 +196,59 @@ h1, h2, h3, h4, h5, h6 {
 .navbar .getstarted:hover, .navbar .getstarted:focus:hover {
   color: #fff;
   background: #3194db;
+}
+
+.navbar .dropdown ul {
+  display: block;
+  position: absolute;
+  left: 14px;
+  top: calc(100% + 30px);
+  margin: 0;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  background: #fff;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  transition: 0.3s;
+  border-radius: 4px;
+}
+.navbar .dropdown ul li {
+  min-width: 200px;
+}
+.navbar .dropdown ul a {
+  padding: 10px 20px;
+  text-transform: none;
+}
+.navbar .dropdown ul a i {
+  font-size: 12px;
+}
+.navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
+  color: #2487ce;
+}
+.navbar .dropdown:hover > ul {
+  opacity: 1;
+  top: 100%;
+  visibility: visible;
+}
+.navbar .dropdown .dropdown ul {
+  top: 0;
+  left: calc(100% - 30px);
+  visibility: hidden;
+}
+.navbar .dropdown .dropdown:hover > ul {
+  opacity: 1;
+  top: 0;
+  left: 100%;
+  visibility: visible;
+}
+@media (max-width: 1366px) {
+  .navbar .dropdown .dropdown ul {
+    left: -90%;
+  }
+  .navbar .dropdown .dropdown:hover > ul {
+    left: -100%;
+  }
 }
 
 /**
@@ -260,6 +315,32 @@ h1, h2, h3, h4, h5, h6 {
   margin: 15px;
 }
 
+.navbar-mobile .dropdown ul {
+  position: static;
+  display: none;
+  margin: 10px 20px;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 1;
+  visibility: visible;
+  background: #fff;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+}
+.navbar-mobile .dropdown ul li {
+  min-width: 200px;
+}
+.navbar-mobile .dropdown ul a {
+  padding: 10px 20px;
+}
+.navbar-mobile .dropdown ul a i {
+  font-size: 12px;
+}
+.navbar-mobile .dropdown ul a:hover, .navbar-mobile .dropdown ul .active:hover, .navbar-mobile .dropdown ul li:hover > a {
+  color: #2487ce;
+}
+.navbar-mobile .dropdown > .dropdown-active {
+  display: block;
+}
 
 
 /*--------------------------------------------------------------
@@ -672,11 +753,6 @@ section {
 
 
 
-
-/*--------------------------------------------------------------
-# Death Form
---------------------------------------------------------------*/
-
 .deathForm{
   position: relative;
     max-width: 100%;
@@ -807,6 +883,146 @@ section {
 
 @media (max-width: 550px) {
     .deathForm form .fields .input-field{
+        width: 100%;
+    }
+}
+
+
+
+/*--------------------------------------------------------------
+# Name Form
+--------------------------------------------------------------*/
+
+.nameForm{
+  position: relative;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 6px;
+    padding: 30px;
+    margin: 0 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.nameForm form{
+    position: relative;
+    margin-top: 10px;
+    min-height: 580px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.nameForm form .form{
+    position: absolute;
+    background-color: #fff;
+    transition: 0.3s ease;
+}
+.nameForm form .form.second{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+}
+.nameForm form.secActive .form.second{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+.nameForm form.secActive .form.first{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+}
+.nameForm form .title{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #4070f4;
+}
+.nameForm form .fields{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.nameForm form .fields .input-field{
+    display: flex;
+    width: calc(100% / 4 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+.nameForm .input-field label{
+    font-size: 12px;
+    font-weight: 500;
+    color: #2e2e2e;
+}
+.nameForm .input-field input, select{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+}
+.nameForm .input-field input :focus,
+.nameForm .input-field select:focus{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+}
+.nameForm .input-field select,
+.nameForm .input-field input[type="date"]{
+    color: #707070;
+}
+.nameForm .input-field input[type="date"]:valid{
+    color: #333;
+}
+.nameForm form button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color: #4070f4;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+.nameForm form .btnText{
+    font-size: 14px;
+    font-weight: 400;
+}
+.nameForm form button:hover{
+    background-color: #265df2;
+}
+.nameForm form .buttons{
+    display: flex;
+    align-items: center;
+}
+.nameForm form .buttons button , .backBtn{
+    margin-right: 14px;
+}
+
+@media (max-width: 750px) {
+    .nameForm form{
+        overflow-y: scroll;
+    }
+    .nameForm form::-webkit-scrollbar{
+       display: none;
+    }
+    .nameForm form .fields .input-field{
+        width: calc(100% / 2 - 10px);
+    }
+}
+
+@media (max-width: 550px) {
+    .nameForm form .fields .input-field{
         width: 100%;
     }
 }
